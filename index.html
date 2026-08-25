@@ -594,7 +594,10 @@ document.getElementById('contactForm').addEventListener('submit', e => {
     const oc=document.createElement('canvas'); oc.width=cols; oc.height=rows;
     const o=oc.getContext('2d'); o.fillStyle='#000'; o.fillRect(0,0,cols,rows);
     const isDesktop = W > 980;
-    const sx=cols*0.82/96, sy=rows*0.90/96, ox=cols*(isDesktop ? 0.56 : 0.5)-48*sx, oy=rows*0.5-46*sy;
+    
+    /* MODIFICARE AICI: 0.65 în loc de 0.56 mută creierul mai în dreapta pe desktop */
+    const sx=cols*0.82/96, sy=rows*0.90/96, ox=cols*(isDesktop ? 0.65 : 0.5)-48*sx, oy=rows*0.5-46*sy;
+    
     const X=x=>ox+x*sx, Y=y=>oy+y*sy;
     o.fillStyle='#fff';
     [[34,35,12],[48,30,13],[62,35,12],[28,47,12],[48,47,16],[68,47,12],[37,59,12],[59,59,12],[48,61,13]]
