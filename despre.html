@@ -21,15 +21,16 @@
   
   /* MENU */
   .nav-center{display:flex;gap:12px;align-items:center}
-  .nav-center > a, .dropdown > a { position: relative; overflow: hidden; font-size: 17.5px; border: 1px solid var(--accent); padding: 8px 18px; border-radius: 6px; transition: .4s; z-index: 1; }
+  .nav-center > a, .dropdown > a { position: relative; overflow: hidden; font-size: 17.5px; border: 1px solid var(--accent); padding: 8px 18px; border-radius: 6px; transition: .4s; z-index: 1; cursor: pointer; display: inline-block;}
   .nav-center > a::before, .dropdown > a::before { content: ""; position: absolute; inset: 0; background: var(--accent); z-index: -1; transform: scaleY(0); transform-origin: bottom; transition: .4s; }
-  .nav-center > a:hover, .dropdown > a:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(240, 65, 12, 0.35); }
+  .nav-center > a:hover, .dropdown > a:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(240, 65, 12, 0.35); color: var(--white); }
   .nav-center > a:hover::before, .dropdown > a:hover::before { transform: scaleY(1); }
+  
   .dropdown { position: relative; display: flex; align-items: center; }
   .dropdown > a::after { content: " ▾"; font-size: 0.8em; opacity: 0.7; margin-left: 4px; }
-  .dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(15px); background: rgba(12, 12, 12, 0.95); border: 1px solid var(--line-d); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 10px; min-width: 180px; opacity: 0; visibility: hidden; transition: .3s; }
+  .dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(15px); background: rgba(12, 12, 12, 0.95); border: 1px solid var(--line-d); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 10px; min-width: 180px; opacity: 0; visibility: hidden; transition: .3s; z-index: 100;}
   .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(8px); }
-  .dropdown-menu a { font-size: 15.5px; padding: 8px 12px; text-align: center; transition: color .2s; }
+  .dropdown-menu a { font-size: 15.5px; padding: 8px 12px; text-align: center; transition: color .2s; white-space: normal; line-height: 1.3;}
   .dropdown-menu a:hover { color: var(--accent); }
 
   .nav-right{display:flex;align-items:center;gap:10px}
@@ -41,8 +42,10 @@
   /* OVERLAY MOBIL */
   .overlay{position:fixed;inset:0;background:var(--ink);z-index:90;display:flex;flex-direction:column;justify-content:center;padding:40px;transform:translateY(-100%);transition:.5s;visibility:hidden; overflow-y:auto}
   .overlay.open{transform:translateY(0);visibility:visible}
-  .overlay a{font-size:10vw;font-weight:800;letter-spacing:-.02em;padding:8px 0}
-  .overlay .x{position:absolute;top:24px;right:28px;font-size:30px;background:none;border:none;color:var(--white)}
+  .overlay a{font-size:10vw;font-weight:800;letter-spacing:-.02em;padding:8px 0; color:var(--white);}
+  .overlay a:hover{color:var(--accent)}
+  .overlay .x{position:absolute;top:24px;right:28px;font-size:30px;background:none;border:none;color:var(--white); cursor:pointer;}
+  .overlay .ov-foot{margin-top:40px;color:var(--muted-d)}
 
   /* CONȚINUT DESPRE */
   .page-top{padding-top: 180px; padding-bottom: 120px;}
@@ -80,12 +83,13 @@
 
 <header id="hdr">
   <a href="index.html" class="brand">
-    <svg class="mark" viewBox="0 0 96 96"><rect width="96" height="96" rx="22" fill="#F0410C"/><g fill="#FAF8F4"><circle cx="34" cy="35" r="12"/><circle cx="48" cy="30" r="13"/><circle cx="62" cy="35" r="12"/><circle cx="28" cy="47" r="12"/><circle cx="48" cy="47" r="16"/><circle cx="68" cy="47" r="12"/><circle cx="37" cy="59" r="12"/><circle cx="59" cy="59" r="12"/><circle cx="48" cy="61" r="13"/></g><g fill="none" stroke="#F0410C" stroke-width="4"><path d="M48 27C44 37 52 45 48 53 45 59 49 64 48 69"/><path d="M31 41C37 45 37 52 31 56"/><path d="M65 41C59 45 59 52 65 56"/></g></svg>
+    <svg class="mark" viewBox="0 0 96 96"><rect width="96" height="96" rx="22" fill="#F0410C"/><g fill="#FAF8F4"><circle cx="34" cy="35" r="12"/><circle cx="48" cy="30" r="13"/><circle cx="62" cy="35" r="12"/><circle cx="28" cy="47" r="12"/><circle cx="48" cy="47" r="16"/><circle cx="68" cy="47" r="12"/><circle cx="37" cy="59" r="12"/><circle cx="59" cy="59" r="12"/><circle cx="48" cy="61" r="13"/></g><g fill="none" stroke="#F0410C" stroke-width="4" stroke-linecap="round"><path d="M48 27C44 37 52 45 48 53 45 59 49 64 48 69"/><path d="M31 41C37 45 37 52 31 56"/><path d="M65 41C59 45 59 52 65 56"/></g></svg>
     <b>PSIHIC <span>SPORTIV</span></b>
   </a>
   <nav class="nav-center">
-    <a href="index.html">Acasă</a>
+    <a href="index.html">Home</a>
     <a href="despre.html">Despre</a>
+    
     <div class="dropdown">
       <a href="blog.html">Articole</a>
       <div class="dropdown-menu">
@@ -95,7 +99,15 @@
         <a href="blog.html#parinti">Părinți</a>
       </div>
     </div>
-    <a href="servicii.html">Servicii</a>
+    
+    <div class="dropdown">
+      <a href="servicii.html">Servicii</a>
+      <div class="dropdown-menu" style="min-width: 270px;">
+        <a href="servicii.html#consiliere">Consiliere psihologică sportivă</a>
+        <a href="servicii.html#analiza">Analiza video a performanței sportive</a>
+      </div>
+    </div>
+    
     <a href="contact.html">Contact</a>
   </nav>
   <div class="nav-right">
@@ -106,8 +118,9 @@
 
 <div class="overlay" id="overlay">
   <button class="x" id="closeMenu">✕</button>
-  <a href="index.html">Acasă</a>
+  <a href="index.html">Home</a>
   <a href="despre.html">Despre</a>
+  
   <a href="blog.html" style="margin-bottom: 0;">Articole</a>
   <div style="display:flex; flex-direction:column; padding-left: 20px; gap: 8px; margin-bottom: 12px;">
     <a href="blog.html#performanta" style="font-size: 6vw; color: var(--muted-d);">Performanță</a>
@@ -115,8 +128,15 @@
     <a href="blog.html#juniori" style="font-size: 6vw; color: var(--muted-d);">Juniori</a>
     <a href="blog.html#parinti" style="font-size: 6vw; color: var(--muted-d);">Părinți</a>
   </div>
-  <a href="servicii.html">Servicii</a>
+  
+  <a href="servicii.html" style="margin-bottom: 0;">Servicii</a>
+  <div style="display:flex; flex-direction:column; padding-left: 20px; gap: 8px; margin-bottom: 12px;">
+    <a href="servicii.html#consiliere" style="font-size: 5vw; line-height: 1.25; color: var(--muted-d);">Consiliere psihologică sportivă</a>
+    <a href="servicii.html#analiza" style="font-size: 5vw; line-height: 1.25; color: var(--muted-d);">Analiza video a performanței sportive</a>
+  </div>
+  
   <a href="contact.html">Contact</a>
+  <div class="ov-foot mono">contact@psihic-sportiv.ro</div>
 </div>
 
 <main>
@@ -148,7 +168,7 @@
       <div class="foot-nav">
         <div class="foot-col">
           <h5>Navigare</h5>
-          <a href="index.html">Acasă</a>
+          <a href="index.html">Home</a>
           <a href="despre.html">Despre</a>
           <a href="blog.html">Articole</a>
           <a href="servicii.html">Servicii</a>
