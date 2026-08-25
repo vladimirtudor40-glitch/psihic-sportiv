@@ -54,7 +54,7 @@
   .brand b{font-weight:800;font-size:15px;letter-spacing:.02em}
   .brand b span{font-weight:500;color:var(--muted-d)}
   
-  /* MODIFICARE AICI: MENIU PRINCIPAL ANIMAT */
+  /* MENIU PRINCIPAL ANIMAT */
   .nav-center{display:flex;gap:12px;align-items:center}
   .nav-center a {
     position: relative;
@@ -67,7 +67,6 @@
     transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
     z-index: 1;
   }
-  /* Elementul care urcă (lichidul portocaliu) */
   .nav-center a::before {
     content: "";
     position: absolute;
@@ -78,7 +77,6 @@
     transform-origin: bottom;
     transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
-  /* Animația la hover */
   .nav-center a:hover {
     color: var(--white);
     transform: translateY(-3px);
@@ -115,7 +113,14 @@
   .btn-solid:hover{filter:brightness(1.08);transform:translateY(-2px)}
   .btn-ghost{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;border-bottom:1.5px solid var(--white);padding-bottom:3px;transition:color .2s,border-color .2s}
   .btn-ghost:hover{color:var(--accent);border-color:var(--accent)}
-  .ascii-wrap{position:relative;height:78vh;max-height:760px;overflow:hidden}
+  
+  /* CONTAINER CREIER */
+  .ascii-wrap{position:relative;height:78vh;max-height:760px;overflow:hidden;}
+  @media(min-width: 981px) {
+    /* Aceasta e regula care îl împinge mult în dreapta doar pe desktop */
+    .ascii-wrap { transform: translateX(18%); }
+  }
+
   #ascii{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:crosshair}
   .hero-status{position:absolute;left:0;bottom:26px;display:flex;flex-direction:column;gap:8px}
   .hero-status div{display:flex;align-items:center;gap:9px;color:var(--white)}
@@ -625,10 +630,9 @@ document.getElementById('contactForm').addEventListener('submit', e => {
     /* brain mask — same geometry as the logo */
     const oc=document.createElement('canvas'); oc.width=cols; oc.height=rows;
     const o=oc.getContext('2d'); o.fillStyle='#000'; o.fillRect(0,0,cols,rows);
-    const isDesktop = W > 980;
     
-    /* MODIFICARE AICI: 0.82 mută extrem creierul spre dreapta */
-    const sx=cols*0.82/96, sy=rows*0.90/96, ox=cols*(isDesktop ? 0.82 : 0.5)-48*sx, oy=rows*0.5-46*sy;
+    /* MODIFICARE AICI: am pus axa orizontala la loc pe 0.5 (centru) pentru a se desena întreg creierul */
+    const sx=cols*0.85/96, sy=rows*0.93/96, ox=cols*0.5-48*sx, oy=rows*0.5-46*sy;
     
     const X=x=>ox+x*sx, Y=y=>oy+y*sy;
     o.fillStyle='#fff';
