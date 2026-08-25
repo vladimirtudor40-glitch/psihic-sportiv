@@ -54,21 +54,38 @@
   .brand b{font-weight:800;font-size:15px;letter-spacing:.02em}
   .brand b span{font-weight:500;color:var(--muted-d)}
   
-  /* MODIFICARE AICI: MENIU PRINCIPAL (DESKTOP) */
+  /* MODIFICARE AICI: MENIU PRINCIPAL ANIMAT */
   .nav-center{display:flex;gap:12px;align-items:center}
-  .nav-center a{
-    font-size:17.5px; 
-    color:var(--white);
-    border:1px solid var(--accent);
-    padding:8px 18px;
-    border-radius:6px;
-    transition:all .3s ease;
+  .nav-center a {
+    position: relative;
+    overflow: hidden;
+    font-size: 17.5px;
+    color: var(--white);
+    border: 1px solid var(--accent);
+    padding: 8px 18px;
+    border-radius: 6px;
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    z-index: 1;
   }
-  .nav-center a:hover{
-    background:rgba(240, 65, 12, 0.15);
-    backdrop-filter:blur(10px);
-    -webkit-backdrop-filter:blur(10px);
-    box-shadow:0 4px 16px rgba(0,0,0,0.2);
+  /* Elementul care urcă (lichidul portocaliu) */
+  .nav-center a::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--accent);
+    z-index: -1;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  /* Animația la hover */
+  .nav-center a:hover {
+    color: var(--white);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(240, 65, 12, 0.35);
+  }
+  .nav-center a:hover::before {
+    transform: scaleY(1);
   }
 
   .nav-right{display:flex;align-items:center;gap:10px}
