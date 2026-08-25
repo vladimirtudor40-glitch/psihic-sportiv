@@ -3,135 +3,63 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Psihic Sportiv — Psiholog sportiv | Juniori, performanță, cluburi</title>
-<meta name="description" content="Psiholog sportiv pentru juniori, sportivi de performanță și cluburi. Concentrare, încredere și echilibru mental, online sau în cabinet. Timișoara & online.">
+<title>Psihic Sportiv — Psiholog sportiv | Performanță</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect width='96' height='96' rx='22' fill='%23F0410C'/%3E%3Cg fill='%23FAF8F4'%3E%3Ccircle cx='34' cy='35' r='12'/%3E%3Ccircle cx='48' cy='30' r='13'/%3E%3Ccircle cx='62' cy='35' r='12'/%3E%3Ccircle cx='28' cy='47' r='12'/%3E%3Ccircle cx='48' cy='47' r='16'/%3E%3Ccircle cx='68' cy='47' r='12'/%3E%3Ccircle cx='37' cy='59' r='12'/%3E%3Ccircle cx='59' cy='59' r='12'/%3E%3Ccircle cx='48' cy='61' r='13'/%3E%3C/g%3E%3Cg fill='none' stroke='%23F0410C' stroke-width='4'%3E%3Cpath d='M48 27C44 37 52 45 48 53 45 59 49 64 48 69'/%3E%3Cpath d='M31 41C37 45 37 52 31 56'/%3E%3Cpath d='M65 41C59 45 59 52 65 56'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#0c0c0c;
-    --panel:#1a1817;
-    --paper:#efeeea;
-    --paper-2:#e4e2dc;
-    --accent:#F0410C;
-    --white:#faf8f4;
-    --muted-d:#8d8a84;   /* muted on dark */
-    --muted-l:#6f6c66;   /* muted on light */
-    --line-d:#2c2a28;
-    --line-l:#d3d0c9;
-    --display:'Inter',-apple-system,system-ui,sans-serif;
-    --mono:'Space Mono',ui-monospace,monospace;
+    --ink:#0c0c0c; --panel:#1a1817; --paper:#efeeea; --paper-2:#e4e2dc;
+    --accent:#F0410C; --white:#faf8f4; --muted-d:#8d8a84; --muted-l:#6f6c66;
+    --line-d:#2c2a28; --line-l:#d3d0c9;
+    --display:'Inter',sans-serif; --mono:'Space Mono',monospace;
     --maxw:1240px;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{
-    font-family:var(--display);
-    background:var(--ink);
-    color:var(--white);
-    -webkit-font-smoothing:antialiased;
-    line-height:1.5;
-    overflow-x:hidden;
-  }
+  body{font-family:var(--display);background:var(--ink);color:var(--white);-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:hidden;}
   a{color:inherit;text-decoration:none}
   img{max-width:100%;display:block}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
   .mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:12px}
 
-  /* ---------- HEADER ---------- */
-  header{
-    position:fixed;top:0;left:0;right:0;z-index:80;
-    display:flex;align-items:center;justify-content:space-between;
-    padding:18px 28px;
-    transition:background .35s ease, border-color .35s ease;
-    border-bottom:1px solid transparent;
-  }
-  header.scrolled{background:rgba(12,12,12,.82);backdrop-filter:blur(12px);border-bottom-color:var(--line-d)}
-  
-  /* LOGO MĂRIT */
+  /* HEADER */
+  header{position:fixed;top:0;left:0;right:0;z-index:80;display:flex;align-items:center;justify-content:space-between;padding:18px 28px;transition:background .35s, border-color .35s;border-bottom:1px solid transparent;}
+  header.scrolled{background:rgba(12,12,12,.92);backdrop-filter:blur(12px);border-bottom-color:var(--line-d)}
   .brand{display:flex;align-items:center;gap:12px}
   .brand .mark{width:38px;height:38px;flex:none;display:block}
   .brand b{font-weight:800;font-size:20px;letter-spacing:.02em}
   .brand b span{font-weight:500;color:var(--muted-d)}
   
-  /* MENIU PRINCIPAL ANIMAT */
+  /* MENIU PRINCIPAL */
   .nav-center{display:flex;gap:12px;align-items:center}
-  .nav-center a {
-    position: relative;
-    overflow: hidden;
-    font-size: 17.5px;
-    color: var(--white);
-    border: 1px solid var(--accent);
-    padding: 8px 18px;
-    border-radius: 6px;
-    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-    z-index: 1;
-    display: inline-block;
+  .nav-center > a, .dropdown > a {
+    position: relative; overflow: hidden; font-size: 17.5px; color: var(--white);
+    border: 1px solid var(--accent); padding: 8px 18px; border-radius: 6px;
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); z-index: 1; display: inline-block; cursor: pointer;
   }
-  .nav-center a::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: var(--accent);
-    z-index: -1;
-    transform: scaleY(0);
-    transform-origin: bottom;
-    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  .nav-center > a::before, .dropdown > a::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--accent); z-index: -1; transform: scaleY(0); transform-origin: bottom; transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
-  .nav-center a:hover {
-    color: var(--white);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(240, 65, 12, 0.35);
+  .nav-center > a:hover, .dropdown > a:hover {
+    color: var(--white); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(240, 65, 12, 0.35);
   }
-  .nav-center a:hover::before {
-    transform: scaleY(1);
-  }
+  .nav-center > a:hover::before, .dropdown > a:hover::before { transform: scaleY(1); }
 
-  /* DROPDOWN MENIU PENTRU BLOG */
+  /* DROPDOWN */
   .dropdown { position: relative; display: flex; align-items: center; }
-  .dropdown > a::after {
-    content: " ▾";
-    font-size: 0.8em;
-    opacity: 0.7;
-    margin-left: 4px;
-  }
+  .dropdown > a::after { content: " ▾"; font-size: 0.8em; opacity: 0.7; margin-left: 4px; }
   .dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%) translateY(15px);
-    background: rgba(12, 12, 12, 0.92);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--line-d);
-    border-radius: 12px;
-    padding: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    min-width: 180px;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-    z-index: 100;
+    position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(15px);
+    background: rgba(12, 12, 12, 0.95); border: 1px solid var(--line-d); border-radius: 12px;
+    padding: 12px; display: flex; flex-direction: column; gap: 10px; min-width: 180px;
+    opacity: 0; visibility: hidden; pointer-events: none; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.8); z-index: 100;
   }
-  .dropdown:hover .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translateX(-50%) translateY(8px);
-  }
-  .dropdown-menu a {
-    font-size: 15.5px;
-    padding: 8px 12px;
-    text-align: center;
-    white-space: nowrap;
-    width: 100%;
-  }
+  .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(8px); }
+  .dropdown-menu a { font-size: 15.5px; padding: 8px 12px; text-align: center; white-space: nowrap; width: 100%; transition: color .2s; }
+  .dropdown-menu a:hover { color: var(--accent); }
 
   .nav-right{display:flex;align-items:center;gap:10px}
   .cta-top{background:var(--accent);color:var(--white);font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em;font-size:12px;padding:13px 18px;font-weight:700;transition:transform .15s,filter .2s}
@@ -139,15 +67,28 @@
   .burger{display:none;background:none;border:1px solid var(--line-d);width:46px;height:46px;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px}
   .burger span{width:18px;height:2px;background:var(--white);transition:.3s}
 
-  /* mobile menu overlay */
-  .overlay{position:fixed;inset:0;background:var(--ink);z-index:90;display:flex;flex-direction:column;justify-content:center;padding:40px;transform:translateY(-100%);transition:transform .5s cubic-bezier(.7,0,.2,1);visibility:hidden; overflow-y:auto}
+  /* OVERLAY MOBIL */
+  .overlay{position:fixed;inset:0;background:var(--ink);z-index:90;display:flex;flex-direction:column;justify-content:center;padding:40px;transform:translateY(-100%);transition:transform .5s;visibility:hidden; overflow-y:auto}
   .overlay.open{transform:translateY(0);visibility:visible}
   .overlay a{font-size:10vw;font-weight:800;letter-spacing:-.02em;padding:8px 0;color:var(--white)}
   .overlay a:hover{color:var(--accent)}
   .overlay .x{position:absolute;top:24px;right:28px;font-size:30px;background:none;border:none;color:var(--white);cursor:pointer}
   .overlay .ov-foot{margin-top:40px;color:var(--muted-d)}
 
-  /* ---------- HERO ---------- */
+  /* COMUNE */
+  .page-top{padding-top: 180px!important;} /* Spatiu pentru paginile secundare */
+  section{position:relative}
+  .sec-pad{padding:120px 0}
+  .eyebrow{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:12px;color:var(--accent);display:flex;align-items:center;gap:9px;margin-bottom:22px}
+  .eyebrow::before{content:"//"}
+  h2.big{font-size:clamp(34px,5.2vw,72px);font-weight:800;letter-spacing:-.03em;line-height:1;}
+  h2.big em{font-style:normal;color:var(--accent)}
+  .btn-solid{background:var(--accent);color:var(--white);font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em;font-size:13px;font-weight:700;padding:16px 26px;display:inline-flex;align-items:center;gap:12px;transition:transform .15s,filter .2s}
+  .btn-solid:hover{filter:brightness(1.08);transform:translateY(-2px)}
+  .btn-ghost{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;border-bottom:1.5px solid var(--white);padding-bottom:3px;transition:color .2s,border-color .2s}
+  .btn-ghost:hover{color:var(--accent);border-color:var(--accent)}
+
+  /* HERO */
   .hero{min-height:100vh;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:20px;padding-top:90px;position:relative}
   .hero-l{padding:0 0 40px 0}
   .hero h1{font-size:clamp(40px,7vw,98px);line-height:.96;font-weight:800;letter-spacing:-.035em;margin:18px 0 26px}
@@ -156,55 +97,19 @@
   .hero-eyebrow{color:var(--muted-d);display:flex;align-items:center;gap:10px}
   .hero-eyebrow::before{content:"";width:11px;height:11px;background:var(--accent)}
   .hero-btns{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
-  .btn-solid{background:var(--accent);color:var(--white);font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em;font-size:13px;font-weight:700;padding:16px 26px;display:inline-flex;align-items:center;gap:12px;transition:transform .15s,filter .2s}
-  .btn-solid:hover{filter:brightness(1.08);transform:translateY(-2px)}
-  .btn-ghost{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;border-bottom:1.5px solid var(--white);padding-bottom:3px;transition:color .2s,border-color .2s}
-  .btn-ghost:hover{color:var(--accent);border-color:var(--accent)}
-  
-  /* CONTAINER CREIER */
   .ascii-wrap{position:relative;height:78vh;max-height:760px;overflow:hidden;}
-  @media(min-width: 981px) {
-    .ascii-wrap { transform: translateX(18%); }
-  }
-
+  @media(min-width: 981px) { .ascii-wrap { transform: translateX(18%); } }
   #ascii{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:crosshair}
   .hero-status{position:absolute;left:0;bottom:26px;display:flex;flex-direction:column;gap:8px}
   .hero-status div{display:flex;align-items:center;gap:9px;color:var(--white)}
   .hero-status .dot{width:9px;height:9px;background:var(--accent)}
-
-  /* ---------- marquee logos ---------- */
+  
+  /* STRIP */
   .strip{border-top:1px solid var(--line-d);border-bottom:1px solid var(--line-d);overflow:hidden;padding:20px 0}
   .strip-track{display:flex;gap:60px;white-space:nowrap;animation:scrollx 30s linear infinite;width:max-content}
   .strip-track span{color:var(--muted-d);font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em;font-size:13px;display:flex;align-items:center;gap:60px}
   .strip-track span::after{content:"◆";color:var(--accent);font-size:8px}
   @keyframes scrollx{to{transform:translateX(-50%)}}
-
-  /* ---------- section base ---------- */
-  section{position:relative}
-  .sec-pad{padding:120px 0}
-  .eyebrow{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:12px;color:var(--accent);display:flex;align-items:center;gap:9px;margin-bottom:22px}
-  .eyebrow::before{content:"//"}
-  h2.big{font-size:clamp(34px,5.2vw,72px);font-weight:800;letter-spacing:-.03em;line-height:1;}
-  h2.big em{font-style:normal;color:var(--accent)}
-
-  /* ABOUT (dark) */
-  .about{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
-  .about .lead{font-size:clamp(20px,2.4vw,32px);font-weight:600;letter-spacing:-.02em;line-height:1.25;margin-bottom:24px}
-  .about p{color:var(--muted-d);font-size:16px;margin-bottom:18px;max-width:34em}
-  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
-  .chip{border:1px solid var(--line-d);padding:10px 15px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--white)}
-  .chip b{color:var(--accent)}
-
-  /* SERVICES (dark) */
-  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line-d);margin-top:50px}
-  .svc{padding:42px 34px 48px;border-bottom:1px solid var(--line-d);border-right:1px solid var(--line-d);transition:background .3s}
-  .svc:nth-child(3n){border-right:none}
-  .svc:hover{background:#141211}
-  .svc .num{font-family:var(--mono);color:var(--accent);font-size:13px;letter-spacing:.1em}
-  .svc h3{font-size:26px;font-weight:700;letter-spacing:-.02em;margin:18px 0 14px}
-  .svc p{color:var(--muted-d);font-size:15px;line-height:1.6}
-  .svc .tag{margin-top:22px;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--white);display:inline-flex;align-items:center;gap:8px;opacity:.7}
-  .svc:hover .tag{opacity:1;color:var(--accent)}
 
   /* PROCESS (light) */
   .light{background:var(--paper);color:var(--ink)}
@@ -229,19 +134,6 @@
   .proc-img .ph{position:absolute;inset:0;display:flex;align-items:flex-end;padding:24px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#5a574f}
   .proc-img svg{position:absolute;inset:0;width:100%;height:100%;opacity:.5}
 
-  /* BLOG (dark) - MODIFICAT PENTRU 4 ELEMENTE */
-  .blog-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;margin-bottom:48px}
-  .blog-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
-  .post{border:1px solid var(--line-d);background:#121110;transition:transform .3s,border-color .3s}
-  .post:hover{transform:translateY(-5px);border-color:var(--accent)}
-  .post .cover{aspect-ratio:16/10;position:relative;overflow:hidden;background:var(--panel)}
-  .post .cover .cat{position:absolute;top:14px;left:14px;background:var(--accent);color:var(--white);font-family:var(--mono);font-size:10px;letter-spacing:.1em;padding:6px 9px;text-transform:uppercase;z-index:2}
-  .post .cover canvas{width:100%;height:100%;display:block}
-  .post .body{padding:22px 22px 26px}
-  .post .meta{font-family:var(--mono);font-size:11px;color:var(--muted-d);letter-spacing:.08em;text-transform:uppercase}
-  .post h3{font-size:20px;font-weight:700;letter-spacing:-.01em;margin:12px 0 14px;line-height:1.25}
-  .post .more{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);display:inline-flex;gap:7px;align-items:center}
-
   /* CONTACT (dark) */
   .contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:start}
   .c-info .row{margin-bottom:26px}
@@ -256,7 +148,6 @@
   .status-card .pulse{width:11px;height:11px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(240,65,12,.6)}70%{box-shadow:0 0 0 12px rgba(240,65,12,0)}100%{box-shadow:0 0 0 0 rgba(240,65,12,0)}}
   .status-card span{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
-
   form{display:grid;gap:18px}
   .frow{display:grid;grid-template-columns:1fr 1fr;gap:18px}
   .field label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-d);margin-bottom:8px}
@@ -279,99 +170,83 @@
   .foot-col a:hover{opacity:1;color:var(--accent)}
   .foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;border-top:1px solid var(--line-d);padding-top:28px;color:var(--muted-d);font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
 
-  /* floating whatsapp */
   .wa-float{position:fixed;right:22px;bottom:22px;z-index:70;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 26px rgba(0,0,0,.4);transition:transform .2s;animation:floatIn .6s 1s both}
   .wa-float:hover{transform:scale(1.08)}
   .wa-float svg{width:30px;height:30px;fill:#fff}
   @keyframes floatIn{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
-
-  /* reveal */
   .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
   .reveal.in{opacity:1;transform:none}
 
-  /* ---------- RESPONSIVE ---------- */
+  /* RESPONSIVE */
   @media(max-width:980px){
-    .nav-center{display:none}
-    .cta-top{display:none}
-    .burger{display:flex}
+    .nav-center, .cta-top{display:none} .burger{display:flex}
     .hero{grid-template-columns:1fr;min-height:auto;padding-top:120px;gap:0}
     .ascii-wrap{height:52vh;order:-1;max-height:440px}
     .hero-status{position:static;flex-direction:row;flex-wrap:wrap;gap:18px;margin-top:24px}
-    .about,.process,.contact-grid{grid-template-columns:1fr;gap:36px}
-    .svc-grid{grid-template-columns:1fr}
-    .svc{border-right:none}
-    .blog-grid{grid-template-columns:1fr}
+    .process,.contact-grid{grid-template-columns:1fr;gap:36px}
     .sec-pad{padding:84px 0}
   }
   @media(max-width:560px){
-    .wrap{padding:0 20px}
-    header{padding:14px 18px}
-    .frow{grid-template-columns:1fr}
-    .foot-nav{gap:30px}
-  }
-  @media(prefers-reduced-motion:reduce){
-    *{animation:none!important;scroll-behavior:auto!important}
-    .reveal{opacity:1;transform:none}
+    .wrap{padding:0 20px} header{padding:14px 18px} .frow{grid-template-columns:1fr} .foot-nav{gap:30px}
   }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
+<!-- HEADER MULTI-PAGE -->
 <header id="hdr">
-  <a href="#top" class="brand" aria-label="Psihic Sportiv — acasă">
-    <svg class="mark" viewBox="0 0 96 96" aria-hidden="true"><rect width="96" height="96" rx="22" fill="#F0410C"/><g fill="#FAF8F4"><circle cx="34" cy="35" r="12"/><circle cx="48" cy="30" r="13"/><circle cx="62" cy="35" r="12"/><circle cx="28" cy="47" r="12"/><circle cx="48" cy="47" r="16"/><circle cx="68" cy="47" r="12"/><circle cx="37" cy="59" r="12"/><circle cx="59" cy="59" r="12"/><circle cx="48" cy="61" r="13"/></g><g fill="none" stroke="#F0410C" stroke-width="4" stroke-linecap="round"><path d="M48 27C44 37 52 45 48 53 45 59 49 64 48 69"/><path d="M31 41C37 45 37 52 31 56"/><path d="M65 41C59 45 59 52 65 56"/></g></svg>
+  <a href="index.html" class="brand">
+    <svg class="mark" viewBox="0 0 96 96"><rect width="96" height="96" rx="22" fill="#F0410C"/><g fill="#FAF8F4"><circle cx="34" cy="35" r="12"/><circle cx="48" cy="30" r="13"/><circle cx="62" cy="35" r="12"/><circle cx="28" cy="47" r="12"/><circle cx="48" cy="47" r="16"/><circle cx="68" cy="47" r="12"/><circle cx="37" cy="59" r="12"/><circle cx="59" cy="59" r="12"/><circle cx="48" cy="61" r="13"/></g><g fill="none" stroke="#F0410C" stroke-width="4" stroke-linecap="round"><path d="M48 27C44 37 52 45 48 53 45 59 49 64 48 69"/><path d="M31 41C37 45 37 52 31 56"/><path d="M65 41C59 45 59 52 65 56"/></g></svg>
     <b>PSIHIC <span>SPORTIV</span></b>
   </a>
   <nav class="nav-center">
-    <a href="#top">Home</a>
-    <a href="#despre">Despre</a>
+    <a href="index.html">Acasă</a>
+    <a href="despre.html">Despre</a>
     <div class="dropdown">
-      <a href="#blog">Articole</a>
+      <a href="blog.html">Articole</a>
       <div class="dropdown-menu">
-        <a href="#blog">Performanță</a>
-        <a href="#blog">Cluburi</a>
-        <a href="#blog">Juniori</a>
-        <a href="#blog">Părinți</a>
+        <a href="blog.html#performanta">Performanță</a>
+        <a href="blog.html#cluburi">Cluburi</a>
+        <a href="blog.html#juniori">Juniori</a>
+        <a href="blog.html#parinti">Părinți</a>
       </div>
     </div>
-    <a href="#servicii">Servicii</a>
-    <a href="#contact">Contact</a>
+    <a href="servicii.html">Servicii</a>
+    <a href="contact.html">Contact</a>
   </nav>
   <div class="nav-right">
-    <a href="#contact" class="cta-top">Hai să vorbim</a>
-    <button class="burger" id="burger" aria-label="Meniu"><span></span><span></span><span></span></button>
+    <a href="contact.html" class="cta-top">Hai să vorbim</a>
+    <button class="burger" id="burger"><span></span><span></span><span></span></button>
   </div>
 </header>
 
 <!-- MOBILE MENU -->
 <div class="overlay" id="overlay">
-  <button class="x" id="closeMenu" aria-label="Închide">✕</button>
-  <a href="#top">Home</a>
-  <a href="#despre">Despre</a>
-  <a href="#blog" style="margin-bottom: 0;">Articole</a>
-  <!-- Sub-meniu pe mobil -->
+  <button class="x" id="closeMenu">✕</button>
+  <a href="index.html">Acasă</a>
+  <a href="despre.html">Despre</a>
+  <a href="blog.html" style="margin-bottom: 0;">Articole</a>
   <div style="display:flex; flex-direction:column; padding-left: 20px; gap: 8px; margin-bottom: 12px;">
-    <a href="#blog" style="font-size: 6vw; color: var(--muted-d);">Performanță</a>
-    <a href="#blog" style="font-size: 6vw; color: var(--muted-d);">Cluburi</a>
-    <a href="#blog" style="font-size: 6vw; color: var(--muted-d);">Juniori</a>
-    <a href="#blog" style="font-size: 6vw; color: var(--muted-d);">Părinți</a>
+    <a href="blog.html#performanta" style="font-size: 6vw; color: var(--muted-d);">Performanță</a>
+    <a href="blog.html#cluburi" style="font-size: 6vw; color: var(--muted-d);">Cluburi</a>
+    <a href="blog.html#juniori" style="font-size: 6vw; color: var(--muted-d);">Juniori</a>
+    <a href="blog.html#parinti" style="font-size: 6vw; color: var(--muted-d);">Părinți</a>
   </div>
-  <a href="#servicii">Servicii</a>
-  <a href="#contact">Contact</a>
+  <a href="servicii.html">Servicii</a>
+  <a href="contact.html">Contact</a>
   <div class="ov-foot mono">contact@psihic-sportiv.ro</div>
 </div>
 
-<!-- HERO -->
 <main id="top">
+<!-- HERO -->
 <section class="hero wrap">
   <div class="hero-l reveal">
     <div class="hero-eyebrow mono">Psiholog sportiv · Timișoara &amp; online</div>
     <h1>Performanța<br>se construiește<br>în <em>minte.</em></h1>
     <p class="lead">Lucrez cu juniori, sportivi de performanță și cluburi ca să transform presiunea în avantaj: concentrare sub stres, încredere stabilă și echilibru — la antrenament și în competiție.</p>
     <div class="hero-btns">
-      <a href="#servicii" class="btn-solid">Vezi serviciile <span>→</span></a>
-      <a href="#contact" class="btn-ghost">Programează o discuție</a>
+      <a href="servicii.html" class="btn-solid">Vezi serviciile <span>→</span></a>
+      <a href="contact.html" class="btn-ghost">Programează o discuție</a>
     </div>
     <div class="hero-status mono">
       <div><span class="dot"></span> Programări deschise</div>
@@ -379,7 +254,7 @@
     </div>
   </div>
   <div class="ascii-wrap reveal">
-    <canvas id="ascii" aria-label="Creier interactiv"></canvas>
+    <canvas id="ascii"></canvas>
   </div>
 </section>
 
@@ -391,57 +266,8 @@
   </div>
 </div>
 
-<!-- ABOUT -->
-<section id="despre" class="sec-pad wrap">
-  <div class="about">
-    <div class="reveal">
-      <div class="eyebrow">Despre</div>
-      <h2 class="big">Sprijin mental<br>pentru oameni<br>care <em>concurează.</em></h2>
-    </div>
-    <div class="reveal">
-      <p class="lead">Sunt <strong>[Nume Prenume]</strong>, psiholog sportiv acreditat. Nu lucrez cu rețete generice — fiecare plan pornește de la sportul tău și de la momentul în care te afli.</p>
-      <p>De la primul antrenament până la finala importantă, mintea decide cât din potențialul tău ajunge pe teren. Te ajut să-ți construiești rutine clare, să gestionezi emoțiile competiționale și să revii mai puternic după accidentări sau înfrângeri.</p>
-      <p>Sportivi, antrenori și familii — toți facem parte din aceeași echipă, cu un single scop: performanță sustenabilă, fără epuizare.</p>
-      <div class="chips">
-        <div class="chip"><b>+10</b> ani experiență</div>
-        <div class="chip"><b>12</b> discipline sportive</div>
-        <div class="chip">Online &amp; cabinet</div>
-        <div class="chip">Confidențial</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section id="servicii" class="sec-pad wrap">
-  <div class="reveal">
-    <div class="eyebrow">Servicii</div>
-    <h2 class="big">Pe cine <em>ajut.</em></h2>
-  </div>
-  <div class="svc-grid">
-    <div class="svc reveal">
-      <div class="num">01 — Juniori</div>
-      <h3>Tineri sportivi</h3>
-      <p>Fundație mentală sănătoasă: gestionarea emoțiilor, motivație autentică, relația cu părinții și antrenorii, echilibru între școală și sport și plăcerea de a juca.</p>
-      <a href="#contact" class="tag">Programează →</a>
-    </div>
-    <div class="svc reveal">
-      <div class="num">02 — Performanță</div>
-      <h3>Sportivi de performanță</h3>
-      <p>Rutine de pregătire mentală, control al anxietății de competiție, focus și imagerie, management al presiunii și revenire după accidentări sau rezultate slabe.</p>
-      <a href="#contact" class="tag">Programează →</a>
-    </div>
-    <div class="svc reveal">
-      <div class="num">03 — Cluburi</div>
-      <h3>Cluburi &amp; echipe</h3>
-      <p>Programe pentru echipe și staff: coeziune de grup, comunicare, cultură a performanței și workshop-uri de pregătire mentală pentru antrenori.</p>
-      <a href="#contact" class="tag">Cere o ofertă →</a>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section id="proces" class="light sec-pad">
+<!-- PROCESS (Acasă) -->
+<section class="light sec-pad">
   <div class="wrap">
     <div class="proc-head reveal">
       <h2 class="big">Cum lucrăm.</h2>
@@ -459,72 +285,23 @@
         </div>
         <div class="step active">
           <div class="step-top"><span class="sqb"></span><span class="n">03</span><h4>Plan și ședințe</h4></div>
-          <p>Lucrăm structurat, cu instrumente potrivite sportului tău: rutine, tehnici de focus și control emoțional. Online sau în cabinet, în ritmul tău.</p>
+          <p>Lucrăm structurat, cu instrumente potrivite sportului tău: rutine, tehnici de focus și control emoțional.</p>
         </div>
         <div class="step">
           <div class="step-top"><span class="sqb"></span><span class="n">04</span><h4>Rezultate</h4></div>
-          <p>Progresul se vede în antrenament și în competiție — și, cel mai important, rămâne cu tine.</p>
+          <p>Progresul se vede în antrenament și în competiție — și rămâne cu tine.</p>
         </div>
       </div>
       <div class="proc-img reveal">
         <svg viewBox="0 0 100 100" preserveAspectRatio="none"><g stroke="#9d9890" stroke-width=".4" fill="none"><path d="M0 70 Q25 40 50 55 T100 30"/><path d="M0 80 Q25 55 50 68 T100 48"/><path d="M0 60 Q25 25 50 42 T100 14"/></g></svg>
-        <div class="ph">Fotografie cabinet / portret — înlocuiește aici</div>
+        <div class="ph">Fotografie cabinet / portret</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- BLOG -->
-<section id="blog" class="sec-pad wrap">
-  <div class="blog-head reveal">
-    <div>
-      <div class="eyebrow">Blog · Resurse</div>
-      <h2 class="big">Articole pe <em>categorii.</em></h2>
-    </div>
-    <a href="#contact" class="btn-ghost">Vezi toate articolele</a>
-  </div>
-  
-  <div class="blog-grid">
-    <article class="post reveal">
-      <div class="cover"><span class="cat">Performanță</span><canvas class="pc" data-seed="2"></canvas></div>
-      <div class="body">
-        <div class="meta">Performanță · 7 min</div>
-        <h3>Rutina mentală dinaintea startului: ce faci în ultimele 10 minute</h3>
-        <a href="#" class="more">Citește →</a>
-      </div>
-    </article>
-    
-    <article class="post reveal">
-      <div class="cover"><span class="cat">Cluburi</span><canvas class="pc" data-seed="3"></canvas></div>
-      <div class="body">
-        <div class="meta">Cluburi · 6 min</div>
-        <h3>Cum construiești coeziune reală într-o echipă tânără</h3>
-        <a href="#" class="more">Citește →</a>
-      </div>
-    </article>
-
-    <article class="post reveal">
-      <div class="cover"><span class="cat">Juniori</span><canvas class="pc" data-seed="1"></canvas></div>
-      <div class="body">
-        <div class="meta">Juniori · 5 min</div>
-        <h3>Cum gestionează un copil presiunea primei competiții</h3>
-        <a href="#" class="more">Citește →</a>
-      </div>
-    </article>
-
-    <article class="post reveal">
-      <div class="cover"><span class="cat">Părinți</span><canvas class="pc" data-seed="4"></canvas></div>
-      <div class="body">
-        <div class="meta">Părinți · 5 min</div>
-        <h3>Cum să-ți susții copilul fără să adaugi o presiune suplimentară</h3>
-        <a href="#" class="more">Citește →</a>
-      </div>
-    </article>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="sec-pad wrap">
+<!-- CONTACT (Acasă) -->
+<section class="sec-pad wrap">
   <div class="reveal" style="margin-bottom:50px">
     <div class="eyebrow">Contact</div>
     <h2 class="big">Hai să <em>vorbim.</em></h2>
@@ -543,14 +320,6 @@
         <div class="lbl">Zonă</div>
         <div class="big-link">Timișoara · România &amp; online</div>
       </div>
-      <div class="row">
-        <div class="lbl">Social</div>
-        <div class="social">
-          <a class="soc" href="#" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.1.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.1-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.1-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.1 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1zm0 3.1a4.9 4.9 0 100 9.8 4.9 4.9 0 000-9.8zm0 8.1a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm5.1-8.3a1.15 1.15 0 11-2.3 0 1.15 1.15 0 012.3 0z"/></svg></a>
-          <a class="soc" href="#" aria-label="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 13.5h2.5l1-4H14V7c0-1 .3-1.7 1.8-1.7H17V1.7c-.3 0-1.4-.1-2.6-.1-2.6 0-4.4 1.6-4.4 4.5v2.4H6.5v4H10V23h4v-9.5z"/></svg></a>
-          <a class="soc" href="#" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM10 9h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.3c0-1.3 0-2.9-1.8-2.9s-2 1.4-2 2.8V21h-4z"/></svg></a>
-        </div>
-      </div>
       <div class="status-card">
         <span class="pulse"></span>
         <span>Accept proiecte noi · doar 3 locuri</span>
@@ -560,25 +329,16 @@
     <div class="reveal">
       <form id="contactForm">
         <div class="frow">
-          <div class="field">
-            <label for="nume">Nume</label>
-            <input id="nume" name="nume" type="text" required placeholder="Numele tău">
-          </div>
-          <div class="field">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" required placeholder="email@exemplu.ro">
-          </div>
+          <div class="field"><label>Nume</label><input name="nume" type="text" required placeholder="Numele tău"></div>
+          <div class="field"><label>Email</label><input name="email" type="email" required placeholder="email@exemplu.ro"></div>
         </div>
         <div class="frow">
+          <div class="field"><label>Telefon</label><input name="tel" type="tel" placeholder="+40 ..."></div>
           <div class="field">
-            <label for="tel">Telefon (opțional)</label>
-            <input id="tel" name="tel" type="tel" placeholder="+40 ...">
-          </div>
-          <div class="field">
-            <label for="cat">Categorie</label>
-            <select id="cat" name="cat">
+            <label>Categorie</label>
+            <select name="cat">
               <option selected>Performanță</option>
-              <option>Club / echipă</option>
+              <option>Cluburi</option>
               <option>Juniori</option>
               <option>Părinți</option>
               <option>Altceva</option>
@@ -586,14 +346,13 @@
           </div>
         </div>
         <div class="field">
-          <label for="mesaj">Mesaj</label>
-          <textarea id="mesaj" name="mesaj" required placeholder="Spune-mi pe scurt unde ești și ce vrei să schimbi."></textarea>
+          <label>Mesaj</label>
+          <textarea name="mesaj" required placeholder="Spune-mi pe scurt unde ești și ce vrei să schimbi."></textarea>
         </div>
         <div class="form-actions">
           <button type="submit" class="btn-solid">Trimite mesajul <span>→</span></button>
-          <a href="#" id="waFromForm" class="wa-btn"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-8.5 15.3L2 22l4.8-1.5A10 10 0 1012 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.8-.6-3.1-1.3-5.1-4.4-5.3-4.6-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.3 0 .5l-.4.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.7-.8c.2-.2.4-.2.6-.1l1.8.9c.3.1.5.2.5.3.1.2.1.7-.1 1.1z"/></svg> Scrie pe WhatsApp</a>
+          <a href="#" id="waFromForm" class="wa-btn">Scrie pe WhatsApp</a>
         </div>
-        <p class="form-note" id="formNote">Răspund în maximum 2 zile lucrătoare. Mesajul tău rămâne confidențial.</p>
       </form>
     </div>
   </div>
@@ -604,67 +363,52 @@
 <footer>
   <div class="wrap">
     <div class="foot-top">
-      <a href="#top" class="brand"><svg class="mark" viewBox="0 0 96 96" aria-hidden="true"><rect width="96" height="96" rx="22" fill="#F0410C"/><g fill="#FAF8F4"><circle cx="34" cy="35" r="12"/><circle cx="48" cy="30" r="13"/><circle cx="62" cy="35" r="12"/><circle cx="28" cy="47" r="12"/><circle cx="48" cy="47" r="16"/><circle cx="68" cy="47" r="12"/><circle cx="37" cy="59" r="12"/><circle cx="59" cy="59" r="12"/><circle cx="48" cy="61" r="13"/></g><g fill="none" stroke="#F0410C" stroke-width="4" stroke-linecap="round"><path d="M48 27C44 37 52 45 48 53 45 59 49 64 48 69"/><path d="M31 41C37 45 37 52 31 56"/><path d="M65 41C59 45 59 52 65 56"/></g></svg><b>PSIHIC <span>SPORTIV</span></b></a>
+      <a href="index.html" class="brand"><svg class="mark" viewBox="0 0 96 96"><rect width="96" height="96" rx="22" fill="#F0410C"/><g fill="#FAF8F4"><circle cx="34" cy="35" r="12"/><circle cx="48" cy="30" r="13"/><circle cx="62" cy="35" r="12"/><circle cx="28" cy="47" r="12"/><circle cx="48" cy="47" r="16"/><circle cx="68" cy="47" r="12"/><circle cx="37" cy="59" r="12"/><circle cx="59" cy="59" r="12"/><circle cx="48" cy="61" r="13"/></g><g fill="none" stroke="#F0410C" stroke-width="4"><path d="M48 27C44 37 52 45 48 53 45 59 49 64 48 69"/><path d="M31 41C37 45 37 52 31 56"/><path d="M65 41C59 45 59 52 65 56"/></g></svg><b>PSIHIC <span>SPORTIV</span></b></a>
       <div class="foot-nav">
         <div class="foot-col">
           <h5>Navigare</h5>
-          <a href="#top">Home</a>
-          <a href="#despre">Despre</a>
-          <a href="#blog">Articole</a>
-          <a href="#servicii">Servicii</a>
-          <a href="#contact">Contact</a>
+          <a href="index.html">Acasă</a>
+          <a href="despre.html">Despre</a>
+          <a href="blog.html">Articole</a>
+          <a href="servicii.html">Servicii</a>
+          <a href="contact.html">Contact</a>
         </div>
         <div class="foot-col">
           <h5>Categorii blog</h5>
-          <a href="#blog">Performanță</a>
-          <a href="#blog">Cluburi</a>
-          <a href="#blog">Juniori</a>
-          <a href="#blog">Părinți</a>
+          <a href="blog.html#performanta">Performanță</a>
+          <a href="blog.html#cluburi">Cluburi</a>
+          <a href="blog.html#juniori">Juniori</a>
+          <a href="blog.html#parinti">Părinți</a>
         </div>
         <div class="foot-col">
           <h5>Contact</h5>
           <a href="mailto:contact@psihic-sportiv.ro">contact@psihic-sportiv.ro</a>
           <a href="tel:+40700000000">+40 700 000 000</a>
-          <a href="#" target="_blank" rel="noopener">Instagram</a>
-          <a href="#" target="_blank" rel="noopener">Facebook</a>
         </div>
       </div>
     </div>
     <div class="foot-bottom">
       <span>© <span id="year"></span> psihic-sportiv.ro</span>
-      <span>Site by twopixeldev.com</span>
     </div>
   </div>
 </footer>
 
-<!-- FLOATING WHATSAPP -->
-<a href="#" id="waFloat" class="wa-float" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-8.5 15.3L2 22l4.8-1.5A10 10 0 1012 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.8-.6-3.1-1.3-5.1-4.4-5.3-4.6-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.3 0 .5l-.4.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.7-.8c.2-.2.4-.2.6-.1l1.8.9c.3.1.5.2.5.3.1.2.1.7-.1 1.1z"/></svg></a>
-
 <script>
-/* ====== CONFIG — schimbă aici numărul și emailul ====== */
-const WHATSAPP = "40700000000";            // numărul tău, fără + și fără spații
-const EMAIL    = "contact@psihic-sportiv.ro";
-const waText   = encodeURIComponent("Bună! Sunt interesat(ă) de o ședință de psihologie sportivă.");
-const waLink   = `https://wa.me/${WHATSAPP}?text=${waText}`;
-document.getElementById('waFloat').href = waLink;
+const WHATSAPP = "40700000000"; const EMAIL = "contact@psihic-sportiv.ro";
+const waLink = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Bună!")}`;
 document.getElementById('waFromForm').href = waLink;
 document.getElementById('year').textContent = new Date().getFullYear();
 
-/* ====== MENU ====== */
 const overlay = document.getElementById('overlay');
 document.getElementById('burger').onclick = () => overlay.classList.add('open');
 document.getElementById('closeMenu').onclick = () => overlay.classList.remove('open');
-overlay.querySelectorAll('a').forEach(a => a.onclick = () => overlay.classList.remove('open'));
 
-/* ====== HEADER SCROLL ====== */
 const hdr = document.getElementById('hdr');
 addEventListener('scroll', () => hdr.classList.toggle('scrolled', scrollY > 30));
 
-/* ====== REVEAL ====== */
 const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }), {threshold:.12});
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-/* ====== PROCESS active step on hover ====== */
 document.querySelectorAll('.step').forEach(step => {
   step.addEventListener('mouseenter', () => {
     document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
@@ -672,120 +416,55 @@ document.querySelectorAll('.step').forEach(step => {
   });
 });
 
-/* ====== CONTACT FORM (mailto) ====== */
 document.getElementById('contactForm').addEventListener('submit', e => {
-  e.preventDefault();
-  const f = e.target;
-  const subject = `Solicitare site — ${f.cat.value} — ${f.nume.value}`;
-  const body = `Nume: ${f.nume.value}\nEmail: ${f.email.value}\nTelefon: ${f.tel.value || '-'}\nCategorie: ${f.cat.value}\n\nMesaj:\n${f.mesaj.value}`;
-  window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  document.getElementById('formNote').textContent = "Se deschide aplicația ta de email. Preferi WhatsApp? Folosește butonul de alături.";
+  e.preventDefault(); const f = e.target;
+  const body = `Nume: ${f.nume.value}\nEmail: ${f.email.value}\nTelefon: ${f.tel.value}\nCategorie: ${f.cat.value}\nMesaj:\n${f.mesaj.value}`;
+  window.location.href = `mailto:${EMAIL}?subject=Contact Site&body=${encodeURIComponent(body)}`;
 });
 
-/* ====== HERO: interactive particle brain (follows cursor) ====== */
+/* BRAIN SCRIPT */
 (function(){
-  const cv = document.getElementById('ascii');
-  if(!cv) return;
-  const ctx = cv.getContext('2d');
-  const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
-  const ACC = '#F0410C';
-  let W=0,H=0,cx=0,cy=0,parts=[],raf;
-  let mx=-9999,my=-9999,offX=0,offY=0;
-  const RR=98, REPEL=2.6, EASE=0.07, FRICTION=0.85, PARA=0.11;
-
+  const cv = document.getElementById('ascii'); if(!cv) return;
+  const ctx = cv.getContext('2d'); const ACC = '#F0410C';
+  let W=0,H=0,cx=0,cy=0,parts=[],raf; let mx=-9999,my=-9999,offX=0,offY=0;
   function build(){
-    W=cv.clientWidth; H=cv.clientHeight;
-    if(W<2||H<2) return;
-    const dpr=Math.min(devicePixelRatio||1,2);
-    cv.width=W*dpr; cv.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
-    cx=W/2; cy=H/2;
+    W=cv.clientWidth; H=cv.clientHeight; if(W<2) return;
+    cv.width=W*2; cv.height=H*2; ctx.setTransform(2,0,0,2,0,0); cx=W/2; cy=H/2;
     const step = W<600 ? Math.max(7, Math.round(W/64)) : Math.max(6, Math.round(W/118));
     const cols=Math.floor(W/step), rows=Math.floor(H/step);
-
-    /* brain mask — same geometry as the logo */
-    const oc=document.createElement('canvas'); oc.width=cols; oc.height=rows;
-    const o=oc.getContext('2d'); o.fillStyle='#000'; o.fillRect(0,0,cols,rows);
-    
-    /* Păstrăm desenarea centrală pe canvas. Mutarea în dreapta se face din CSS. */
+    const oc=document.createElement('canvas'); oc.width=cols; oc.height=rows; const o=oc.getContext('2d'); o.fillRect(0,0,cols,rows);
+    const isDesktop = W > 980;
     const sx=cols*0.85/96, sy=rows*0.93/96, ox=cols*0.5-48*sx, oy=rows*0.5-46*sy;
-    
     const X=x=>ox+x*sx, Y=y=>oy+y*sy;
     o.fillStyle='#fff';
-    [[34,35,12],[48,30,13],[62,35,12],[28,47,12],[48,47,16],[68,47,12],[37,59,12],[59,59,12],[48,61,13]]
-      .forEach(([x,y,r])=>{o.beginPath();o.ellipse(X(x),Y(y),r*sx,r*sy,0,0,7);o.fill();});
+    [[34,35,12],[48,30,13],[62,35,12],[28,47,12],[48,47,16],[68,47,12],[37,59,12],[59,59,12],[48,61,13]].forEach(([x,y,r])=>{o.beginPath();o.ellipse(X(x),Y(y),r*sx,r*sy,0,0,7);o.fill();});
     o.strokeStyle='#000'; o.lineWidth=Math.max(1.2,cols*0.02); o.lineCap='round';
     o.beginPath();o.moveTo(X(48),Y(27));o.bezierCurveTo(X(44),Y(37),X(52),Y(45),X(48),Y(53));o.bezierCurveTo(X(45),Y(59),X(49),Y(64),X(48),Y(69));o.stroke();
     o.beginPath();o.moveTo(X(31),Y(41));o.bezierCurveTo(X(37),Y(45),X(37),Y(52),X(31),Y(56));o.stroke();
     o.beginPath();o.moveTo(X(65),Y(41));o.bezierCurveTo(X(59),Y(45),X(59),Y(52),X(65),Y(56));o.stroke();
-
     const data=o.getImageData(0,0,cols,rows).data;
-    const inside=(c,r)=>(c<0||r<0||c>=cols||r>=rows)?0:(data[(r*cols+c)*4]>120?1:0);
     parts=[];
     for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){
-      if(!inside(c,r)) continue;
-      let n=0; for(let dr=-1;dr<=1;dr++)for(let dc=-1;dc<=1;dc++) n+=inside(c+dc,r+dr);
-      const edge=n<7, orange=Math.random()<0.15;
-      const col = orange ? ACC : (edge ? 'rgba(178,175,168,0.85)' : 'rgba(250,248,244,0.95)');
-      parts.push({
-        hx:c*step+step/2, hy:r*step+step/2,
-        x:cx+(Math.random()-0.5)*W*0.6, y:cy+(Math.random()-0.5)*H*0.6,  // form-in on load
-        vx:0, vy:0, col, sz: orange ? step*0.36 : step*0.30
-      });
+      if(data[(r*cols+c)*4]<=120) continue;
+      parts.push({ hx:c*step+step/2, hy:r*step+step/2, x:cx+(Math.random()-0.5)*W, y:cy+(Math.random()-0.5)*H, vx:0, vy:0, col: Math.random()<0.15?ACC:'rgba(250,248,244,0.9)', sz: step*0.3 });
     }
-    if(reduce){ for(const p of parts){ p.x=p.hx; p.y=p.hy; } draw(); }
   }
-
   function draw(){
     ctx.clearRect(0,0,W,H);
-    const tox = mx>-9000 ? (mx-cx)*PARA : 0;
-    const toy = my>-9000 ? (my-cy)*PARA : 0;
-    offX += (tox-offX)*0.05; offY += (toy-offY)*0.05;
+    offX += ((mx>-9000?mx-cx:0)*0.11 - offX)*0.05; offY += ((my>-9000?my-cy:0)*0.11 - offY)*0.05;
     for(const p of parts){
-      const tx=p.hx+offX, ty=p.hy+offY;
       const dx=p.x-mx, dy=p.y-my, d2=dx*dx+dy*dy;
-      if(d2<RR*RR){ const d=Math.sqrt(d2)||1, f=(1-d/RR)*REPEL; p.vx+=dx/d*f; p.vy+=dy/d*f; }
-      p.vx+=(tx-p.x)*EASE; p.vy+=(ty-p.y)*EASE;
-      p.vx*=FRICTION; p.vy*=FRICTION; p.x+=p.vx; p.y+=p.vy;
-      ctx.fillStyle=p.col;
-      ctx.fillRect(p.x-p.sz/2, p.y-p.sz/2, p.sz, p.sz);
+      if(d2<9604){ const d=Math.sqrt(d2)||1, f=(1-d/98)*2.6; p.vx+=dx/d*f; p.vy+=dy/d*f; }
+      p.vx+=(p.hx+offX-p.x)*0.07; p.vy+=(p.hy+offY-p.y)*0.07;
+      p.vx*=0.85; p.vy*=0.85; p.x+=p.vx; p.y+=p.vy;
+      ctx.fillStyle=p.col; ctx.fillRect(p.x-p.sz/2, p.y-p.sz/2, p.sz, p.sz);
     }
   }
-
   function loop(){ draw(); raf=requestAnimationFrame(loop); }
-
-  function move(e){ const r=cv.getBoundingClientRect(); const pt=e.touches?e.touches[0]:e; mx=pt.clientX-r.left; my=pt.clientY-r.top; }
-  function leave(){ mx=-9999; my=-9999; }
-  cv.addEventListener('pointermove', move, {passive:true});
-  cv.addEventListener('pointerleave', leave);
-  cv.addEventListener('touchmove', move, {passive:true});
-  cv.addEventListener('touchend', leave);
-
+  cv.addEventListener('pointermove', e => { const r=cv.getBoundingClientRect(); mx=e.clientX-r.left; my=e.clientY-r.top; });
+  cv.addEventListener('pointerleave', () => { mx=-9999; my=-9999; });
   addEventListener('resize', ()=>{ clearTimeout(window.__b); window.__b=setTimeout(build,180); });
-  build();
-  if(!reduce){ cancelAnimationFrame(raf); loop(); }
-})();
-
-/* ====== BLOG COVER patterns (no stock photos — replace with real images) ====== */
-(function(){
-  document.querySelectorAll('.pc').forEach(cv=>{
-    const ctx=cv.getContext('2d');
-    const seed=+cv.dataset.seed;
-    function paint(){
-      const w=cv.clientWidth,h=cv.clientHeight,dpr=Math.min(devicePixelRatio||1,2);
-      if(w<2)return;
-      cv.width=w*dpr;cv.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
-      ctx.fillStyle='#1a1817';ctx.fillRect(0,0,w,h);
-      const g=12;ctx.font='12px "Space Mono", monospace';ctx.textBaseline='top';
-      const chars=['/','\\','|','—','+','·','•','='];
-      for(let y=0;y<h;y+=g)for(let x=0;x<w;x+=g){
-        const v=Math.sin((x*0.05+seed)+(y*0.05))+Math.cos(x*0.02*seed - y*0.03);
-        const on=(Math.sin(x*0.6+y*0.3+seed*9))>0.3;
-        ctx.fillStyle = on ? (Math.abs(v)>1.2?'#F0410C':'#3a3836') : '#242220';
-        ctx.fillText(chars[(Math.floor(Math.abs(v)*4)+seed)%chars.length], x, y);
-      }
-    }
-    paint(); addEventListener('resize',()=>{clearTimeout(cv.__t);cv.__t=setTimeout(paint,200);});
-  });
+  build(); loop();
 })();
 </script>
 </body>
