@@ -48,7 +48,7 @@
   }
   .nav-center > a:hover::before, .dropdown > a:hover::before { transform: scaleY(1); }
 
-  /* DROPDOWN */
+  /* DROPDOWN - REPARAT */
   .dropdown { position: relative; display: flex; align-items: center; }
   .dropdown > a::after { content: " ▾"; font-size: 0.8em; opacity: 0.7; margin-left: 4px; }
   .dropdown-menu {
@@ -56,6 +56,10 @@
     background: rgba(12, 12, 12, 0.95); border: 1px solid var(--line-d); border-radius: 12px;
     padding: 12px; display: flex; flex-direction: column; gap: 10px; min-width: 180px;
     opacity: 0; visibility: hidden; pointer-events: none; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.8); z-index: 100;
+  }
+  /* Podul invizibil care menține hover-ul */
+  .dropdown-menu::before {
+    content: ""; position: absolute; top: -20px; left: 0; width: 100%; height: 20px;
   }
   .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(8px); }
   .dropdown-menu a { font-size: 15.5px; padding: 8px 12px; text-align: center; white-space: normal; line-height: 1.3; width: 100%; transition: color .2s; }
@@ -186,7 +190,7 @@
   .field input,.field select,.field textarea{width:100%;background:transparent;border:1px solid var(--line-d);color:var(--white);padding:14px 15px;font-family:var(--display);font-size:15px;transition:border-color .2s}
   .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent)}
   .field textarea{resize:vertical;min-height:120px}
-  .field select{appearance:none;cursor:pointer}
+  .field select{appearance:none;cursor:pointer; color: var(--white); background: var(--panel);}
   .form-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:4px}
   .wa-btn{display:inline-flex;align-items:center;gap:10px;background:#1f1d1c;border:1px solid var(--line-d);color:var(--white);font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:15px 20px;transition:.25s}
   .wa-btn:hover{border-color:#25D366;background:#13241a}
@@ -502,7 +506,6 @@
 </section>
 </main>
 
-<!-- FOOTER -->
 <footer>
   <div class="wrap">
     <div class="foot-top">
@@ -548,6 +551,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
 const overlay = document.getElementById('overlay');
 document.getElementById('burger').onclick = () => overlay.classList.add('open');
 document.getElementById('closeMenu').onclick = () => overlay.classList.remove('open');
+
 const hdr = document.getElementById('hdr');
 addEventListener('scroll', () => hdr.classList.toggle('scrolled', scrollY > 30));
 
