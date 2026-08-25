@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consiliere Psihologică Sportivă | Psihic Sportiv</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect width='96' height='96' rx='22' fill='%23F0410C'/%3E%3Cg fill='%23FAF8F4'%3E%3Ccircle cx='34' cy='35' r='12'/%3E%3Ccircle cx='48' cy='30' r='13'/%3E%3Ccircle cx='62' cy='35' r='12'/%3E%3Ccircle cx='28' cy='47' r='12'/%3E%3Ccircle cx='48' cy='47' r='16'/%3E%3Ccircle cx='68' cy='47' r='12'/%3E%3Ccircle cx='37' cy='59' r='12'/%3E%3Ccircle cx='59' cy='59' r='12'/%3E%3Ccircle cx='48' cy='61' r='13'/%3E%3C/g%3E%3Cg fill='none' stroke='%23F0410C' stroke-width='4'%3E%3Cpath d='M48 27C44 37 52 45 48 53 45 59 49 64 48 69'/%3E%3Cpath d='M31 41C37 45 37 52 31 56'/%3E%3Cpath d='M65 41C59 45 59 52 65 56'/%3E%3C/g%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --ink:#0c0c0c; --accent:#F0410C; --white:#faf8f4; --muted-d:#8d8a84; --line-d:#2c2a28; --display:'Inter',sans-serif; --mono:'Space Mono',monospace; --maxw:1240px; }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--display);background:var(--ink);color:var(--white);-webkit-font-smoothing:antialiased;line-height:1.5;}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+  .mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:12px}
+
+  /* HEADER */
+  header{position:fixed;top:0;left:0;right:0;z-index:80;display:flex;align-items:center;justify-content:space-between;padding:18px 28px;transition:.3s;border-bottom:1px solid transparent;}
+  header.scrolled{background:rgba(12,12,12,.92);backdrop-filter:blur(12px);border-bottom-color:var(--line-d)}
+  .brand{display:flex;align-items:center;gap:12px} .brand .mark{width:38px;height:38px} .brand b{font-weight:800;font-size:20px;letter-spacing:.02em} .brand b span{font-weight:500;color:var(--muted-d)}
+  
+  .nav-center{display:flex;gap:12px;align-items:center}
+  .nav-center > a, .dropdown > a { position: relative; overflow: hidden; font-size: 17.5px; border: 1px solid var(--accent); padding: 8px 18px; border-radius: 6px; transition: .4s; z-index: 1; cursor: pointer; display: inline-block;}
+  .nav-center > a::before, .dropdown > a::before { content: ""; position: absolute; inset: 0; background: var(--accent); z-index: -1; transform: scaleY(0); transform-origin: bottom; transition: .4s; }
+  .nav-center > a:hover, .dropdown > a:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(240, 65, 12, 0.35); color: var(--white); }
+  .nav-center > a:hover::before, .dropdown > a:hover::before { transform: scaleY(1); }
+  
+  .dropdown { position: relative; display: flex; align-items: center; }
+  .dropdown > a::after { content: " ▾"; font-size: 0.8em; opacity: 0.7; margin-left: 4px; }
+  .dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(15px); background: rgba(12, 12, 12, 0.95); border: 1px solid var(--line-d); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 10px; min-width: 180px; opacity: 0; visibility: hidden; transition: .3s; z-index:100;}
+  .dropdown-menu::before { content: ""; position: absolute; top: -20px; left: 0; width: 100%; height: 20px; }
+  .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(8px); pointer-events: auto; }
+  .dropdown-menu a { font-size: 15.5px; padding: 8px 12px; text-align: center; white-space: normal; line-height: 1.3; transition: color .2s; width: 100%;}
+  .dropdown-menu a:hover { color: var(--accent); }
+
+  .nav-right{display:flex;align-items:center;gap:10px}
+  .cta-top{background:var(--accent);font-family:var(--mono);text-transform:uppercase;font-size:12px;padding:13px 18px;font-weight:700;transition:.2s}
+  .cta-top:hover{filter:brightness(1.08);transform:translateY(-1px)}
+  .burger{display:none;background:none;border:1px solid var(--line-d);width:46px;height:46px;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+  .burger span{width:18px;height:2px;background:var(--white);transition:.3s}
+
+  .overlay{position:fixed;inset:0;background:var(--ink);z-index:90;display:flex;flex-direction:column;justify-content:center;padding:40px;transform:translateY(-100%);transition:.5s;visibility:hidden; overflow-y:auto}
+  .overlay.open{transform:translateY(0);visibility:visible}
+  .overlay a{font-size:10vw;font-weight:800;letter-spacing:-.02em;padding:8px 0; color:var(--white);}
+  .overlay .x{position:absolute;top:24px;right:28px;font-size:30px;background:none;border:none;color:var(--white); cursor:pointer;}
+
+  /* DESIGN PAGINĂ INDIVIDUALĂ */
+  .page-top{padding-top: 180px; padding-bottom: 120px;}
+  .eyebrow{font-family:var(--mono);text-transform:uppercase;font-size:12px;color:var(--accent);display:flex;align-items:center;gap:9px;margin-bottom:22px}
+  .eyebrow::before{content:"//"}
+  h2.big{font-size:clamp(34px,5.2vw,72px);font-weight:800;letter-spacing:-.03em;line-height:1;}
+  h2.big em{font-style:normal;color:var(--accent)}
+  
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
+  .about .lead{font-size:clamp(20px,2.4vw,32px);font-weight:600;letter-spacing:-.02em;line-height:1.25;margin-bottom:24px}
+  .about p{color:var(--muted-d);font-size:16px;margin-bottom:18px;max-width:34em}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+  .chip{border:1px solid var(--line-d);padding:10px 15px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+  .chip b{color:var(--accent)}
+
+  .btn-solid{background:var(--accent);color:var(--white);font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em;font-size:13px;font-weight:700;padding:16px 26px;display:inline-flex;align-items:center;gap:12px;transition:transform .15s,filter .2s; cursor:pointer; border:none; margin-top:20px;}
+  .btn-solid:hover{filter:brightness(1.08);transform:translateY(-2px)}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:.7s}
+  .reveal.in{opacity:1;transform:none}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--line-d);padding:60px 0 40px}
+  .foot-top{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap;margin-bottom:50px}
+  .foot-nav{display:flex;gap:50px;flex-wrap:wrap}
+  .foot-col h5{font-family:var(--mono);font-size:11px;color:var(--muted-d);margin-bottom:16px}
+  .foot-col a{display:block;font-size:15px;margin-bottom:9px;opacity:.85;transition:.2s}
+  .foot-col a:hover{opacity:1;color:var(--accent)}
+  .foot-bottom{border-top:1px solid var(--line-d);padding-top:28px;color:var(--muted-d);font-family:var(--mono);font-size:11px}
+
+  @media(max-width:980px){
+    .nav-center, .cta-top{display:none} .burger{display:flex}
+    .about{grid-template-columns:1fr;gap:36px}
+  }
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <a href="index.html" class="brand">
+    <svg class="mark" viewBox="0 0 96 96"><rect width="96" height="96" rx="22" fill="#F0410C"/><g fill="#FAF8F4"><circle cx="34" cy="35" r="12"/><circle cx="48" cy="30" r="13"/><circle cx="62" cy="35" r="12"/><circle cx="28" cy="47" r="12"/><circle cx="48" cy="47" r="16"/><circle cx="68" cy="47" r="12"/><circle cx="37" cy="59" r="12"/><circle cx="59" cy="59" r="12"/><circle cx="48" cy="61" r="13"/></g><g fill="none" stroke="#F0410C" stroke-width="4" stroke-linecap="round"><path d="M48 27C44 37 52 45 48 53 45 59 49 64 48 69"/><path d="M31 41C37 45 37 52 31 56"/><path d="M65 41C59 45 59 52 65 56"/></g></svg>
+    <b>PSIHIC <span>SPORTIV</span></b>
+  </a>
+  <nav class="nav-center">
+    <a href="index.html">Home</a>
+    <a href="despre.html">Despre</a>
+    
+    <div class="dropdown">
+      <a href="blog.html">Articole</a>
+      <div class="dropdown-menu">
+        <a href="blog.html#performanta">Performanță</a>
+        <a href="blog.html#cluburi">Cluburi</a>
+        <a href="blog.html#juniori">Juniori</a>
+        <a href="blog.html#parinti">Părinți</a>
+      </div>
+    </div>
+    
+    <div class="dropdown">
+      <a href="servicii.html">Servicii</a>
+      <div class="dropdown-menu" style="min-width: 270px;">
+        <a href="servicii.html#consiliere">Consiliere psihologică sportivă</a>
+        <a href="servicii.html#analiza">Analiza video a performanței sportive</a>
+      </div>
+    </div>
+    
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="nav-right">
+    <a href="contact.html" class="cta-top">Hai să vorbim</a>
+    <button class="burger" id="burger"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="overlay" id="overlay">
+  <button class="x" id="closeMenu">✕</button>
+  <a href="index.html">Home</a>
+  <a href="despre.html">Despre</a>
+  
+  <a href="blog.html" style="margin-bottom: 0;">Articole</a>
+  <div style="display:flex; flex-direction:column; padding-left: 20px; gap: 8px; margin-bottom: 12px;">
+    <a href="blog.html#performanta" style="font-size: 6vw; color: var(--muted-d);">Performanță</a>
+    <a href="blog.html#cluburi" style="font-size: 6vw; color: var(--muted-d);">Cluburi</a>
+    <a href="blog.html#juniori" style="font-size: 6vw; color: var(--muted-d);">Juniori</a>
+    <a href="blog.html#parinti" style="font-size: 6vw; color: var(--muted-d);">Părinți</a>
+  </div>
+  
+  <a href="servicii.html" style="margin-bottom: 0;">Servicii</a>
+  <div style="display:flex; flex-direction:column; padding-left: 20px; gap: 8px; margin-bottom: 12px;">
+    <a href="servicii.html#consiliere" style="font-size: 5vw; line-height: 1.25; color: var(--muted-d);">Consiliere psihologică sportivă</a>
+    <a href="servicii.html#analiza" style="font-size: 5vw; line-height: 1.25; color: var(--muted-d);">Analiza video a performanței sportive</a>
+  </div>
+  
+  <a href="contact.html">Contact</a>
+  <div class="ov-foot mono">contact@psihic-sportiv.ro</div>
+</div>
+
+<main>
+<section class="page-top wrap">
+  <div class="about">
+    <div class="reveal">
+      <div class="eyebrow">01 — Detalii Serviciu</div>
+      <h2 class="big">Consiliere<br>psihologică<br><em>sportivă.</em></h2>
+    </div>
+    <div class="reveal">
+      <p class="lead">O fundație mentală solidă face diferența între un sportiv bun și unul excepțional. În momentele de presiune maximă, mintea ta trebuie să fie cel mai puternic aliat, nu cel mai mare inamic.</p>
+      
+      <p>Consilierea psihologică sportivă se adresează sportivilor de orice vârstă care doresc să își îmbunătățească performanțele prin optimizarea resurselor mentale. Fie că te confrunți cu anxietate competițională, o scădere a motivației, lipsă de concentrare sau ai nevoie de sprijin pentru o revenire mentală după o accidentare, lucrăm împreună punctual și aplicat.</p>
+      
+      <p>Sesiunile noastre se bazează pe strategii dovedite științific: de la tehnici de relaxare și imagerie mentală (vizualizare), până la restructurare cognitivă și stabilirea unor obiective clare. Scopul final este ca tu să poți intra în arenă cu o minte clară, pregătită exclusiv pentru execuție.</p>
+      
+      <div class="chips">
+        <div class="chip">Focus</div>
+        <div class="chip">Încredere</div>
+        <div class="chip">Control emoțional</div>
+        <div class="chip">Reziliență</div>
+      </div>
+      
+      <a href="contact.html" class="btn-solid">Programează o ședință <span>→</span></a>
+      <a href="servicii.html" style="display:inline-block; margin-left: 15px; font-family:var(--mono); font-size: 11px; text-transform: uppercase; color: var(--muted-d); text-decoration: underline;">← Înapoi la servicii</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <a href="index.html" class="brand"><svg class="mark" viewBox="0 0 96 96"><rect width="96" height="96" rx="22" fill="#F0410C"/><g fill="#FAF8F4"><circle cx="34" cy="35" r="12"/><circle cx="48" cy="30" r="13"/><circle cx="62" cy="35" r="12"/><circle cx="28" cy="47" r="12"/><circle cx="48" cy="47" r="16"/><circle cx="68" cy="47" r="12"/><circle cx="37" cy="59" r="12"/><circle cx="59" cy="59" r="12"/><circle cx="48" cy="61" r="13"/></g><g fill="none" stroke="#F0410C" stroke-width="4"><path d="M48 27C44 37 52 45 48 53 45 59 49 64 48 69"/><path d="M31 41C37 45 37 52 31 56"/><path d="M65 41C59 45 59 52 65 56"/></g></svg><b>PSIHIC <span>SPORTIV</span></b></a>
+      <div class="foot-nav">
+        <div class="foot-col">
+          <h5>Navigare</h5>
+          <a href="index.html">Home</a>
+          <a href="despre.html">Despre</a>
+          <a href="blog.html">Articole</a>
+          <a href="servicii.html">Servicii</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="foot-col">
+          <h5>Categorii blog</h5>
+          <a href="blog.html#performanta">Performanță</a>
+          <a href="blog.html#cluburi">Cluburi</a>
+          <a href="blog.html#juniori">Juniori</a>
+          <a href="blog.html#parinti">Părinți</a>
+        </div>
+        <div class="foot-col">
+          <h5>Contact</h5>
+          <a href="mailto:contact@psihic-sportiv.ro">contact@psihic-sportiv.ro</a>
+          <a href="tel:+40700000000">+40 700 000 000</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> psihic-sportiv.ro</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+const overlay = document.getElementById('overlay');
+document.getElementById('burger').onclick = () => overlay.classList.add('open');
+document.getElementById('closeMenu').onclick = () => overlay.classList.remove('open');
+const hdr = document.getElementById('hdr');
+addEventListener('scroll', () => hdr.classList.toggle('scrolled', scrollY > 30));
+const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }), {threshold:.12});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
